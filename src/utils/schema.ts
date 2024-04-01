@@ -22,12 +22,12 @@ export const NovelSchema = z.object({
   thumbnail: z.string(),
   is_new: z.boolean(),
   is_full: z.boolean(),
-  description: z.string(),
-  short_description: z.string(),
+  description: z.string().optional(),
+  short_description: z.string().optional(),
   lastest_chapters: z.array(ChapterSchema),
   genres: z.array(GenreSchema),
   chapters: z.array(ChapterSchema),
-  authors: z.string(),
+  author: z.string(),
 })
 
 export const GetNovelsResult = z.object({

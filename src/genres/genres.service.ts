@@ -14,4 +14,13 @@ export class GenresService {
       throw err;
     }
   }
+
+  async getNovelsByGenre(genreId: string, page?: number) {
+    try {
+      const body = await Scraper.getNovelsByGenre(genreId, page)
+      return body
+    } catch (err) {
+      throw err;
+    }
+  }
 }

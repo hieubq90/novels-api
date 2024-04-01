@@ -7,7 +7,7 @@ import { GenresService } from './genres.service'
 
 @Controller('')
 export class GenresController {
-  constructor(private readonly genresService: GenresService) {}
+  constructor(private readonly genresService: GenresService) { }
 
   @TsRestHandler(contact.genres.get)
   async getGenres() {
@@ -19,8 +19,10 @@ export class GenresController {
 
   @TsRestHandler(contact.genres.byId)
   async getNovelsByGenreId() {
-    return tsRestHandler(contact.genres.get, async () => {
-      return { status: 200, body: [] };
+    return tsRestHandler(contact.genres.byId, async (args) => {
+      const { params, query } = args
+      const body = await this.genresService.getNovelsByGenre(params.gid, query.page)
+      return { status: 200, body: body };
     })
   }
 }
