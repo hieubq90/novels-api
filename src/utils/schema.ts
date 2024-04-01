@@ -1,0 +1,37 @@
+import { z } from 'zod'
+
+export const GenreSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  is_top: z.boolean().optional(),
+  description: z.string().optional(),
+})
+
+export const ChapterSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+})
+
+export const ChapterContent = z.object({
+  content: z.string()
+})
+
+export const NovelSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  thumbnail: z.string(),
+  is_new: z.boolean(),
+  is_full: z.boolean(),
+  description: z.string(),
+  short_description: z.string(),
+  lastest_chapters: z.array(ChapterSchema),
+  genres: z.array(GenreSchema),
+  chapters: z.array(ChapterSchema),
+  authors: z.string(),
+})
+
+export const GetNovelsResult = z.object({
+  novels: z.array(NovelSchema),
+  total_pages: z.number(),
+  current_page: z.number(),
+})
