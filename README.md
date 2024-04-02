@@ -45,6 +45,17 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
+## Deploying to vercel
+
+```bash
+# build
+$ yarn run build
+
+# deploy
+$ vercel --prod
+
+```
+
 ## Test
 
 ```bash
