@@ -16,6 +16,11 @@ export const ChapterContent = z.object({
   content: z.string()
 })
 
+export const AuthorSchema = z.object({
+  id: z.string().optional(),
+  name: z.string().optional()
+})
+
 export const NovelSchema = z.object({
   id: z.string(),
   title: z.string(),
@@ -27,7 +32,7 @@ export const NovelSchema = z.object({
   lastest_chapters: z.array(ChapterSchema),
   genres: z.array(GenreSchema),
   chapters: z.array(ChapterSchema),
-  author: z.string(),
+  author: AuthorSchema,
 })
 
 export const GetNovelsResult = z.object({

@@ -40,20 +40,10 @@ const novel = c.router(
         200: GetNovelsResult,
       },
       query: z.object({
+        gid: z.string().optional(),
         page: z.string().transform(Number).optional(),
       }),
       summary: 'get new novels',
-    },
-    recent: {
-      method: 'GET',
-      path: '/novels/recent',
-      responses: {
-        200: GetNovelsResult,
-      },
-      query: z.object({
-        page: z.string().transform(Number).optional(),
-      }),
-      summary: 'get recently updated novels',
     },
     hot: {
       method: 'GET',
@@ -62,6 +52,7 @@ const novel = c.router(
         200: GetNovelsResult,
       },
       query: z.object({
+        gid: z.string().optional(),
         page: z.string().transform(Number).optional(),
       }),
       summary: 'get full novels',
@@ -73,9 +64,22 @@ const novel = c.router(
         200: GetNovelsResult,
       },
       query: z.object({
+        gid: z.string().optional(),
         page: z.string().transform(Number).optional(),
       }),
       summary: 'get full novels',
+    },
+    author: {
+      method: 'GET',
+      path: '/novels/author',
+      responses: {
+        200: GetNovelsResult,
+      },
+      query: z.object({
+        aid: z.string().optional(),
+        page: z.string().transform(Number).optional(),
+      }),
+      summary: 'get novels of author',
     },
     detail: {
       method: 'GET',
@@ -101,7 +105,7 @@ const novel = c.router(
     },
     chapterContent: {
       method: 'GET',
-      path: '/novels/detail/:nid/chapters',
+      path: '/novels/detail/:nid/chapters/:cid',
       pathParams: z.object({
         nid: z.string(),
       }),
@@ -116,4 +120,4 @@ const novel = c.router(
 export const contact = c.router({
   genres: genre,
   novels: novel,
-}, { pathPrefix: "/api/v1", strictStatusCode: true})
+}, { pathPrefix: "/api/v1", strictStatusCode: true })

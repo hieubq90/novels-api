@@ -22,7 +22,7 @@ export class GenresController {
     return tsRestHandler(contact.genres.byId, async (args) => {
       const { params, query } = args
       const body = await this.genresService.getNovelsByGenre(params.gid, query.page)
-      return { status: 200, body: body };
+      return { status: 200, body };
     })
   }
 }
