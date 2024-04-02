@@ -9,12 +9,16 @@ import { GenresModule } from './genres/genres.module'
 import { NovelsModule } from './novels/novels.module'
 
 @Module({
-  imports: [ServeStaticModule.forRoot({
-    rootPath: join(__dirname, '..', 'client'),
-    serveRoot: "",
-    exclude: ['/api/(.*)'],
-  }), NovelsModule, GenresModule],
-  controllers: [AppController],
-  providers: [AppService],
+	imports: [
+		ServeStaticModule.forRoot({
+			rootPath: join(__dirname, '..', 'client'),
+			serveRoot: '',
+			exclude: ['/api/(.*)'],
+		}),
+		NovelsModule,
+		GenresModule,
+	],
+	controllers: [AppController],
+	providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}
